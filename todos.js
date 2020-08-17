@@ -41,7 +41,3 @@ const todos = [
     id: 5,
   },
 ]
-
-let currentTodos = [...todos]
-
-module.exports = todos;

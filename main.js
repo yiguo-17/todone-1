@@ -1,22 +1,25 @@
 // Remember that our list is called `todos`, and it's in `todos.js`. It's not in this file, nor is it being `require`-d in, but it's available globally because its file is loaded in before this one in `index.html`.
 
-// Write the function below its comment and you'll be doing pretty well.  The printTodo function has been begun for you so that we can drill down in the comments on its individual steps. Add the code for each part below its comment as well.
-// Doing it this way will self-document your code and, more importantly, make it easier to follow along with the assignment!
+// Write each function below its comment and you'll be doing pretty well.  The printTodo function has been begun for you so that we can drill down in the comments on its individual steps. Add the code for each part below its comment as well.
+// Doing our code under its pre-written comment in this way will self-document your code and, more importantly, make it easier to follow along with the assignment!
+
+// Remember that each function below is a helper function or an event listener function that runs when the user interacts with our page. So we should NOT be calling any functions or doing anythinmg in the global scope. Just functions functions functions!
+// (With one big exception, which you'll see in the comments when we get there.)
+
+// And now: code away.
 
 
-// Add an item to our todo list.
+
+// Given a todo object, adds an item to our todo list.
 
 
-// Remove an item at a given index from our todo list. You can use splice!
-
-
-// Given an todo object, put it on the DOM. This is a pretty big function!
+// Given a todo object, put it on the DOM. This is a pretty big function!
 const printTodo = function(todo) {
   // Use `document.createElement` to make an <li>, and set its text (preferably using `.innerText`) to be our given object's text field.
 
 
 
-  // Query the ul and put it in a variable.
+  // Query the ol and put it in a variable.
 
 
 
@@ -50,7 +53,7 @@ const printTodo = function(todo) {
 
 
 
-// Call the above function immediately after you define it, so our todos array gets printed out on page load.
+// Call the above function immediately after you define it, so our todos array gets printed out on page load. This is the only time we're calling a function, the rest is event listeners and helper functions that run when the user interacts with the DOM!
 
 
 
@@ -80,7 +83,7 @@ Let's wire it all together. Add an event listener for the add todo button that w
 
 /* 
 
-Wire up your clear todos button. Give it an event listener that clears all todos from the dom (we have a function for that!) and removes them all todo objects from the todos array as well.
+Wire up your clear todos button. Give it an event listener that clears all todos from the DOM (we have a function for that!) and removes them all todo objects from the todos array as well.
 
 */
 
