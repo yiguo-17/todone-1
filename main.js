@@ -12,32 +12,38 @@
 
 // Given a todo object, adds an item to our todo list.
 
-
 // Given a todo object, put it on the DOM. This is a pretty big function!
 const printTodo = function(todo) {
-  // Use `document.createElement` to make an <li>, and set its text (preferably using `.innerText`) to be our given object's text field.
+  const bullet = document.createElement("li");
+  bullet.innerText = todo.text; // Use `document.createElement` to make an <li>, and set its text (preferably using `.innerText`) to be our given object's text field.
 
 
 
-  // Query the ol and put it in a variable.
+ const toDos = document.querySelector("ol"); // Query the ol and put it in a variable.
 
 
 
-  // Append the li we made to the ul as the last child using `.appendChild`. If this isn't working for you, check what is being appended to what!
+  toDos.appendChild(bullet);// Append the li we made to the ul as the last child using `.appendChild`. If this isn't working for you, check what is being appended to what!
 
 
 
-  // Give our new li a `todo-item` class using `classList`.
+  bullet.classList.add("todo-item");// Give our new li a `todo-item` class using `classList`.
 
 
 
-  // Give our new li an id that is the object's id. This is so that we have a matching relationship between todo node elements and their corresponding objects.
+ bullet.id = todo.id; // Give our new li an id that is the object's id. This is so that we have a matching relationship between todo node elements and their corresponding objects.
 
 
 
-  // Give the li a `complete` class if the todo object indicates it was complete already.
+  if(todo.complete === true){
+    bullet.classList.add("complete");
+  }// Give the li a `complete` class if the todo object indicates it was complete already.
+  const  completeness = function() {
+    bullet.classList.toggle("complete");
+    todos[bullet.id].complete = !todos[bullet.id].complete;
+  }
 
-
+bullet.addEventListener('click',completeness);
 
   // Give the <p> with the todo's text in it an event listener
   // to toggle that todo's completeness.
@@ -50,11 +56,19 @@ const printTodo = function(todo) {
 
 
 // Print all todos. Loop through our todos array and call the above function on each one.
-
-
+const printAll = function(){
+  for(const todo of todos){
+    printTodo(todo)
+  }  
+}
+printAll()
 
 // Call the above function immediately after you define it, so our todos array gets printed out on page load. This is the only time we're calling a function, the rest is event listeners and helper functions that run when the user interacts with the DOM!
 
+const list = document.querySelector("ol");
+const cleanAll = function(){
+  list.innerHTML = ""
+}
 
 
 
@@ -86,7 +100,23 @@ Let's wire it all together. Add an event listener for the add todo button that w
 Wire up your clear todos button. Give it an event listener that clears all todos from the DOM (we have a function for that!) and removes them all todo objects from the todos array as well.
 
 */
+const newItem = document.querySelector(".todo-input")
+const addNew = function(){
 
+  const newTodo = {
+    text: newItem.value,
+    complete: false,
+    priority: 2,
+    id: todos.length
+  }
+  printTodo(newTodo)
+  todos.push(newTodo);
+  newItem.value = "";
+  //cleanAll();
+  //printAll(todos);
+}
+const button = document.querySelector("button");
+button.addEventListener('click',addNew)
 
 
 // And you're DONE with a basic todo app! Next we'll make it very, very powerful.
